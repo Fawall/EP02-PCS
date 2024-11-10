@@ -14,10 +14,10 @@ Registro::Registro(Data *d, bool manual) {
     }   
 }
 
-Registro::Registro(Data *d, bool manual) {
+Registro::Registro(Data *d) {
 
     this->d = d;           
-
+    this->manual = false;
     if (d == nullptr) {
         throw new invalid_argument ("data invalida");
     }

@@ -3,19 +3,18 @@
 
 class Registro {
 
-protected:
-
-Data* d;
-bool manual;
+private:
+    Data* d;
+    bool manual;
 
 public:
 
-Registro(Data* d);               //posso escolher qual instancia criar
-Registro(Data* d, bool manual);
+    Registro(Data* d);               //posso escolher qual instancia criar
+    Registro(Data* d, bool manual);
 
-virtual ~Registro() = 0;
-Data* getData();
-bool isManual();
+    virtual ~Registro();
+    Data* getData();
+    bool isManual();
 
 };
 
