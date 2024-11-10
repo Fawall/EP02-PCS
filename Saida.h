@@ -3,6 +3,9 @@
 
 class Saida: public Registro {
 
+private: 
+    Data *d;
+
 public:
 
 Saida(Data* d);
