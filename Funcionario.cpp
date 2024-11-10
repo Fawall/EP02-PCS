@@ -4,10 +4,12 @@
 #include "string"
 
 
+using namespace std;
+
 Funcionario::Funcionario(int id, string nome) : Usuario(id, nome) {
     this->id = id;
     this->nome = nome;
-    registros = new vector<Registro* >();
+    this->registros = new vector<Registro* >();
 }
 
 Funcionario::Funcionario(int id, string nome, vector<Registro* >* registros) : Usuario(id, nome) {
@@ -16,10 +18,14 @@ Funcionario::Funcionario(int id, string nome, vector<Registro* >* registros) : U
     this->registros = registros;
 }   
 
+bool Funcionario::entrar(Data *d) {
+    Registro* r = new Registro(d);
 
-bool Usuario::entrar(Data *d){
-    
-
+    if(registros->size() == 0) {
+        registros->push_back(r);
+        return true;
+    }
 
 
 }
+
