@@ -12,11 +12,13 @@ class Funcionario : Usuario {
     private:
         int id;
         string nome;
-        vector<Registro* >* registros;
+        vector<Registro* > *registros;
 
     public:
         Funcionario(int id, string nome);
         Funcionario(int id, string nome, vector<Registro* >* registros);
+
+        bool entrar(Data *d);
 
         virtual ~Funcionario();
 
