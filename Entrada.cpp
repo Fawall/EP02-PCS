@@ -2,7 +2,7 @@
 #include <stdexcept>
 #include <iostream>
 #include "Registro.h"
-//#include "Data.h"
+#include "Data.h"
 
 using namespace std;
 
