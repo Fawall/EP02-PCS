@@ -1,5 +1,5 @@
 #include "Funcionario.h"
-#include "Registro.h"
+#include "Entrada.h"
 #include "vector"
 #include "string"
 
@@ -19,13 +19,30 @@ Funcionario::Funcionario(int id, string nome, vector<Registro* >* registros) : U
 }   
 
 bool Funcionario::entrar(Data *d) {
-    Registro* r = new Registro(d);
+    Entrada* e = new Entrada(d);
 
     if(registros->size() == 0) {
-        registros->push_back(r);
+        registros->push_back(e);
         return true;
     }
 
+    (*registros)[registros->size() - 1]->getData()->getDia();
+
+    if( (*registros)[registros->size() - 1] != e) {
+        registros->push_back(e);
+        return true;
+    }
+
+    int diferenca = d->diferenca((*registros)[registros->size() - 1]->getData());
+    Registro* ultimoRegistro = (*registros)[registros->size() - 1];
+
+    if(dynamic_cast<Entrada*>(ultimoRegistro) != nullptr && diferenca < 0) {
+        return false;
+    } else {
+        registros->push_back(e);
+        return true;
+    }
+    return false;
 
 }
 
