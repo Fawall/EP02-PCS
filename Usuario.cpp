@@ -19,11 +19,11 @@ int Usuario::getId() {
     return this->id;
 }
 
-bool Usuario::entrar(Data *d) {
-    
-}
+bool Usuario::entrar(Data *d) {}
 
-bool Usuario::sair(Data *d) {
-    
-}
+bool Usuario::sair(Data *d) {}
+
+bool Usuario::registrarEntradaManual(Data *d) { }
+
+bool Usuario::registrarSaidaManual(Data *d) { }
 
