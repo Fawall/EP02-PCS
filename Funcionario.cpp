@@ -1,5 +1,6 @@
 #include "Funcionario.h"
 #include "Entrada.h"
+#include "Saida.h"
 #include "vector"
 #include "string"
 
@@ -26,23 +27,37 @@ bool Funcionario::entrar(Data *d) {
         return true;
     }
 
-    (*registros)[registros->size() - 1]->getData()->getDia();
-
-    if( (*registros)[registros->size() - 1] != e) {
-        registros->push_back(e);
-        return true;
-    }
-
-    int diferenca = d->diferenca((*registros)[registros->size() - 1]->getData());
+    // int diferenca = d->diferenca((*registros)[registros->size() - 1]->getData());
     Registro* ultimoRegistro = (*registros)[registros->size() - 1];
 
-    if(dynamic_cast<Entrada*>(ultimoRegistro) != nullptr && diferenca < 0) {
+    if(dynamic_cast<Entrada*>(ultimoRegistro) != e && 
+     d->diferenca((*registros)[registros->size() - 1]->getData()) > 0) {
         return false;
     } else {
         registros->push_back(e);
         return true;
     }
     return false;
+}
 
+bool Funcionario::sair(Data *d) {
+    Saida* s = new Saida(d);
+
+    if(registros->size() == 0) {
+        registros->push_back(s);
+        
+        return false;
+    }
+
+    Registro* ultimoRegistro = (*registros)[registros->size() - 1];
+
+    if(dynamic_cast<Saida*>(ultimoRegistro) != s && 
+     d->diferenca((*registros)[registros->size() - 1]->getData()) > 0) {
+        return false;
+    } else {
+        registros->push_back(s);
+        return true;
+    }
+    return false;
 }
 
