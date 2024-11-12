@@ -13,3 +13,14 @@ Entrada::Entrada(Data *d):Registro(d) { //jogo do construtor da entrada para o d
         throw new invalid_argument ("data invalida");
     }
 }
+
+Entrada::Entrada(Data *d, bool manual):Registro(d, manual) {
+    this->d = d;
+    this->manual = manual;
+
+    if (d == nullptr) {
+        throw new invalid_argument ("data invalida");
+    }
+}
+
+Entrada::~Entrada() {}
