@@ -12,3 +12,14 @@ Saida::Saida(Data *d):Registro(d) { //jogo do construtor da entrada para o do re
         throw new invalid_argument ("data invalida");
     }
 }
+
+Saida::Saida(Data *d, bool manual):Registro(d, manual) {
+    this->d = d;
+    this->manual = manual;
+
+    if (d == nullptr) {
+        throw new invalid_argument ("data invalida");
+    }
+}
+
+Saida::~Saida() {}
