@@ -1,4 +1,6 @@
 #ifndef REGISTRO_H
+#define REGISTRO_H
+
 #include "Data.h"
 
 class Registro {
@@ -18,4 +20,4 @@ public:
 
 };
 
-#endif;
+#endif
