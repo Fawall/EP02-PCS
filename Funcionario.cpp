@@ -3,7 +3,7 @@
 #include "Saida.h"
 #include "vector"
 #include "string"
-
+#include <iostream>
 
 using namespace std;
 
@@ -18,6 +18,13 @@ Funcionario::Funcionario(int id, string nome, vector<Registro* >* registros) : U
     this->nome = nome;
     this->registros = registros;
 }   
+
+Funcionario::~Funcionario() {
+    for(int i = 0; i < registros->size(); i++) {
+        delete (*registros)[i];
+    }
+    delete registros;
+}
 
 bool Funcionario::entrar(Data *d) {
     Entrada* e = new Entrada(d);
