@@ -133,7 +133,7 @@ int Funcionario::getHorasTrabalhadas(int mes, int ano) {
             }
         }
     }
-    return horas;
+    return -horas;
 }
 
 
