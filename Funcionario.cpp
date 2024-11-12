@@ -30,7 +30,7 @@ bool Funcionario::entrar(Data *d) {
     // int diferenca = d->diferenca((*registros)[registros->size() - 1]->getData());
     Registro* ultimoRegistro = (*registros)[registros->size() - 1];
 
-    if(dynamic_cast<Entrada*>(ultimoRegistro) != e && 
+    if(dynamic_cast<Entrada*>(ultimoRegistro) != nullptr && 
      d->diferenca((*registros)[registros->size() - 1]->getData()) > 0) {
         return false;
     } else {
@@ -46,12 +46,12 @@ bool Funcionario::sair(Data *d) {
     if(registros->size() == 0) {
         registros->push_back(s);
         
-        return false;
+        return true;
     }
 
     Registro* ultimoRegistro = (*registros)[registros->size() - 1];
 
-    if(dynamic_cast<Saida*>(ultimoRegistro) != s && 
+    if(dynamic_cast<Saida*>(ultimoRegistro) != nullptr && 
      d->diferenca((*registros)[registros->size() - 1]->getData()) > 0) {
         return false;
     } else {
@@ -61,3 +61,22 @@ bool Funcionario::sair(Data *d) {
     return false;
 }
 
+bool Funcionario::registrarEntradaManual(Data *d) {
+    Entrada* e = new Entrada(d, true);
+
+    if(registros->size() == 0) {
+        registros->push_back(e);
+        return true;
+    }
+
+    Registro* ultimoRegistro = (*registros)[registros->size() - 1];
+
+    if(dynamic_cast<Entrada*>(ultimoRegistro) != nullptr && 
+     d->diferenca((*registros)[registros->size() - 1]->getData()) > 0) {
+        return false;
+    } else {
+        registros->push_back(e);
+        return true;
+    }
+    return false;
+}
