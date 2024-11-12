@@ -80,3 +80,53 @@ bool Funcionario::registrarEntradaManual(Data *d) {
     }
     return false;
 }
+
+bool Funcionario::registrarSaidaManual(Data *d) {
+    Saida* s = new Saida(d, true);
+
+    if(registros->size() == 0) {
+        registros->push_back(s);
+        return true;
+    }
+
+    Registro* ultimoRegistro = (*registros)[registros->size() - 1];
+
+    if(dynamic_cast<Saida*>(ultimoRegistro) != nullptr && 
+     d->diferenca((*registros)[registros->size() - 1]->getData()) > 0) {
+        return false;
+    } else {
+        registros->push_back(s);
+        return true;
+    }
+    return false;
+}
+
+vector<Registro *> *Funcionario::getRegistros() {
+    return registros;
+}
+
+int Funcionario::getHorasTrabalhadas(int mes, int ano) {
+    if(registros->size() == 0) {
+        return 0;
+    }
+    
+    
+    int horas = 0;
+
+    for(int i = 0; i < registros->size(); i++) {
+        Registro* r = (*registros)[i];
+        if(r->getData()->getMes() == mes && r->getData()->getAno() == ano) {
+            if(dynamic_cast<Entrada*>(r) != nullptr) {
+                if(i + 1 < registros->size()) {
+                    Registro* r2 = (*registros)[i + 1];
+                    if(dynamic_cast<Saida*>(r2) != nullptr) {
+                        horas += (r->getData()->diferenca(r2->getData()))/3600;
+                    }
+                }
+            }
+        }
+    }
+    return horas;
+}
+
+
