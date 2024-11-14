@@ -127,13 +127,13 @@ int Funcionario::getHorasTrabalhadas(int mes, int ano) {
                 if(i + 1 < registros->size()) {
                     Registro* r2 = (*registros)[i + 1];
                     if(dynamic_cast<Saida*>(r2) != nullptr) {
-                        horas += (r->getData()->diferenca(r2->getData()))/3600;
+                        horas += (r2->getData()->diferenca(r->getData()))/3600;
                     }
                 }
             }
         }
     }
-    return -horas;
+    return horas;
 }
 
 
