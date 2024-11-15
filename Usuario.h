@@ -20,7 +20,7 @@ class Usuario {
         string getNome();
         int getId();
 
-        virtual bool entrar(Data *d) = 0;
+        virtual bool entrar(Data *d);
         virtual bool sair(Data *d);
         virtual bool registrarEntradaManual(Data *d);
         virtual bool registrarSaidaManual(Data *d);
