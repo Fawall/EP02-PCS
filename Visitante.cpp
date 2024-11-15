@@ -47,3 +47,11 @@ bool Visitante::registrarEntradaManual(Data *d){
 bool Visitante::registrarSaidaManual(Data *d){
     return false;
 }
+
+string Visitante::getNome() {
+    return this->nome;
+}
+
+int Visitante::getId() {
+    return this->id;
+}
