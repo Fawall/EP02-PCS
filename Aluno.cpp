@@ -29,13 +29,21 @@ bool Aluno::entrar(Data *d) {
     return true;
 }
 
-bool Aluno::sair() {
+bool Aluno::sair(Data *d) {
     return true;
 }
 
-bool Aluno::registrarEntradaManual(){
+int Aluno::getHoraFim() {
+    return horaFim;
+}
+
+int Aluno::getMinutoFim() {
+    return minutoFim;
+}
+
+bool Aluno::registrarEntradaManual(Data *d){
     return false;
 }
-bool Aluno::registrarSaidaManual(){
+bool Aluno::registrarSaidaManual(Data *d){
     return true;
 }
