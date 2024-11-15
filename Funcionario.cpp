@@ -136,4 +136,11 @@ int Funcionario::getHorasTrabalhadas(int mes, int ano) {
     return horas;
 }
 
+string Funcionario::getNome() {
+    return this->nome;
+}
+
+int Funcionario::getId() {
+    return this->id;
+}
 
