@@ -25,6 +25,9 @@ public:
     bool registrarEntradaManual(Data* d);
     bool registrarSaidaManual(Data* d);
 
+    string getNome();
+    int getId();
+
 
 };
 
