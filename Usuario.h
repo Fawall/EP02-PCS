@@ -17,8 +17,8 @@ class Usuario {
         Usuario(int id, string nome);
         virtual ~Usuario();
 
-        string getNome();
-        int getId();
+        virtual string getNome();
+        virtual int getId();
 
         virtual bool entrar(Data *d);
         virtual bool sair(Data *d);
