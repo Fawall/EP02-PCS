@@ -27,6 +27,8 @@ class Funcionario : Usuario {
         bool sair(Data *d);
         bool registrarEntradaManual(Data *d);
         bool registrarSaidaManual(Data *d);
+        string getNome();
+        int getId();
         
 };
 
