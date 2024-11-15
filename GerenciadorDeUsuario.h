@@ -16,9 +16,9 @@ public:
     GerenciadorDeUsuario(vector<Usuario*> usuarios);
     virtual ~GerenciadorDeUsuario();
 
-    void adicionarUsuario(Usuario* u);
+    void adicionar(Usuario* u);
     Usuario* getUsuario(int id);
-    vector<Usuario*> getUsuarios();
+    vector<Usuario*> *getUsuarios();
 
 };
 
