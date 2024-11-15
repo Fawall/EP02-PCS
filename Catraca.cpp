@@ -9,7 +9,7 @@ Catraca::Catraca(GerenciadorDeUsuario *g){
 Catraca::~Catraca() {}
 
 bool Catraca::entrar(int id, Data* d){
-    if(g->getUsuarios().size() == 0 ){
+    if(g->getUsuarios()->size() == 0 ){
         return false;
     }
 
@@ -20,7 +20,7 @@ bool Catraca::entrar(int id, Data* d){
 }
 
 bool Catraca::sair(int id, Data* d){
-    if(g->getUsuarios().size() == 0 ){
+    if(g->getUsuarios()->size() == 0 ){
         return false;
     }
 
