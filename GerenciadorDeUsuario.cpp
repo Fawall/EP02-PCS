@@ -17,21 +17,20 @@ GerenciadorDeUsuario::GerenciadorDeUsuario(vector<Usuario*> usuarios) {
 
 
 void GerenciadorDeUsuario::adicionarUsuario(Usuario* u) {
-    vector<Usuario*>::iterator it = find_if(usuarios->begin(), usuarios->end(), [u](Usuario* usuario) { return usuario->getId() == u->getId(); });
-
-    if(it != usuarios->end())
-        throw new invalid_argument("Usuario ja existe");
-
+    
+    for(int i = 0; i < usuarios->size(); i++){
+        if(usuarios->at(i)->getId() == u->getId())
+            throw new invalid_argument("Usuario ja existe");
+    }
     usuarios->push_back(u);
 }
 
 Usuario* GerenciadorDeUsuario::getUsuario(int id){
-    vector<Usuario*>::iterator it = find_if(usuarios->begin(), usuarios->end(), [id](Usuario* usuario) { return usuario->getId() == id; });
-
-    if(it == usuarios->end())
-        return nullptr;
-
-    return *it;
+    for(int i = 0; i < usuarios->size(); i++){
+        if(usuarios->at(i)->getId() == id)
+            return usuarios->at(i);
+    }
+    return nullptr;
 }
 
 vector<Usuario*> GerenciadorDeUsuario::getUsuarios() {
