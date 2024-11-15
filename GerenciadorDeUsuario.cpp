@@ -16,7 +16,7 @@ GerenciadorDeUsuario::GerenciadorDeUsuario(vector<Usuario*> usuarios) {
 }
 
 
-void GerenciadorDeUsuario::adicionarUsuario(Usuario* u) {
+void GerenciadorDeUsuario::adicionar(Usuario* u) {
     
     for(int i = 0; i < usuarios->size(); i++){
         if(usuarios->at(i)->getId() == u->getId())
@@ -33,8 +33,8 @@ Usuario* GerenciadorDeUsuario::getUsuario(int id){
     return nullptr;
 }
 
-vector<Usuario*> GerenciadorDeUsuario::getUsuarios() {
-    return *usuarios;
+vector<Usuario*>* GerenciadorDeUsuario::getUsuarios() {
+    return usuarios;
 }
 
 GerenciadorDeUsuario::~GerenciadorDeUsuario() {
