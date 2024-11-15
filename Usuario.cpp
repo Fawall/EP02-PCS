@@ -1,4 +1,5 @@
 #include "Usuario.h"
+#include <string>
 #include <stdexcept>
 
 using namespace std;
