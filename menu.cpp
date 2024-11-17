@@ -3,8 +3,11 @@
 #include <iostream>
 #include "Catraca.h"
 #include "Data.h"
+#include "Aluno.h"
 #include "GerenciadorDeUsuario.h"
 #include "Registro.h"
+#include "Visitante.h"
+#include "Funcionario.h"
 
 using namespace std;
 
@@ -134,18 +137,75 @@ do {
 
         case 4:
         {
+
             cout << "Tipo (v, a ou f): ";
             cin >> tipo;
-            cout << "Id: ";
-            cin >> id;
-            cout << "Nome: ";
-            cin >> nome;
 
-            usuario = new Usuario(id,nome);
+            if(tipo == 'v'){
+                Data* dataInicio;
+                Data* dataFim;
+                
+                cout << "Id: ";
+                cin >> id;
+                cout << "Nome: ";
+                cin >> nome;
+                cout << "Data de inicio" << endl;
+                cout << "Hora: ";
+                cin >> hora;
+                cout << "Minuto: ";
+                cin >> minuto;
+                cout << "Segundo: ";
+                cin >> segundo;
+                cout << "dia: ";
+                cin >> dia;
+                cout << "mes: ";
+                cin >> mes;
+                cout << "Ano: ";
+                cin >> ano;
 
-            //condicao
-            cout << "Usuario cadastrado com sucesso";
-            
+                dataInicio = new Data(hora, minuto, segundo, dia, mes, ano);
+
+                cout << "Data de fim" << endl;
+                cout << "Hora: ";
+                cin >> hora;
+                cout << "Minuto: ";
+                cin >> minuto;
+                cout << "Segundo: ";
+                cin >> segundo;
+                cout << "dia: ";
+                cin >> dia;
+                cout << "mes: ";
+                cin >> mes;
+                cout << "Ano: ";
+                cin >> ano;
+
+                dataFim = new Data(hora, minuto, segundo, dia, mes, ano);
+
+                Visitante *v = new Visitante(id,nome,dataInicio,dataFim);
+                g->adicionar(v);
+                cout << "Visitante cadastrado com sucesso";
+            }
+            if(tipo == 'a'){
+                cout << "Id: ";
+                cin >> id;
+                cout << "Nome: ";
+                cin >> nome;
+
+                Aluno *a = new Aluno(id,nome);
+                g->adicionar(a);
+                cout << "Aluno cadastrado com sucesso";
+            }
+
+            if(tipo == 'f'){
+                cout << "Id: ";
+                cin >> id;
+                cout << "Nome: ";
+                cin >> nome;
+
+                Funcionario *f = new Funcionario(id,nome);
+                g->adicionar(f);
+                cout << "Funcionario cadastrado com sucesso";
+            }
 
             break;
         }
