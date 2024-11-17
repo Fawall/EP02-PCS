@@ -4,7 +4,7 @@
 #include "Usuario.h"
 #include "Data.h"
 
-class Visitante : Usuario
+class Visitante : public Usuario
 {
 
 private:
