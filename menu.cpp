@@ -31,7 +31,7 @@ void menu()
     Catraca *c0 = new Catraca(g);
     Catraca *c1 = new Catraca(g);
 
-    cout << "Deseja carregar usuarios (s/n)" << endl;
+    cout << "Deseja carregar usuarios (s/n): ";
     cin >> resposta;
 
     cout << "Arquivo: ";
@@ -83,9 +83,11 @@ void menu()
                 cout << "[Entrada] Catraca " << catraca << " travada" << endl
                      << endl;
             }
-            // condicao
-            cout << "Catraca " << catraca << "abriu: id " << id << endl
-                 << endl;
+            else{
+                cout << "[Entrada] Catraca " << catraca << " abriu: id " << id << endl
+                     << endl;
+            }
+        break;
         }
 
         case 2:
@@ -114,9 +116,10 @@ void menu()
                 cout << "[Saida] Catraca " << catraca << " travada" << endl
                      << endl;
             }
-            cout << "Saida " << catraca << "abriu: id " << id << endl
-                 << endl;
-
+            else{
+                cout << "[Saida] Catraca " << catraca << " abriu: id " << id << endl
+                     << endl;
+            }
             break;
         }
 
