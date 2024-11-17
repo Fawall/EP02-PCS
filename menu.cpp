@@ -11,18 +11,23 @@
 
 using namespace std;
 
-void menu() {
+void menu()
+{
 
-    Usuario* usuario;
+    Usuario *usuario;
+    Funcionario *funcionario;
+    Visitante *visitante;
+    Aluno *aluno;
+
     Data *d;
 
-    int escolha,id,mes,ano,hora,minuto,segundo,dia,catraca;
-    char resposta,tipo,opcao;
+    int escolha, id, mes, ano, hora, minuto, segundo, dia, catraca;
+    char resposta, tipo, opcao;
     bool verifica;
     string nome;
 
     GerenciadorDeUsuario *g = new GerenciadorDeUsuario();
-    
+
     Catraca *c0 = new Catraca(g);
     Catraca *c1 = new Catraca(g);
 
@@ -30,25 +35,27 @@ void menu() {
     cin >> resposta;
 
     cout << "Arquivo: ";
-    //cin >> txt;
+    // cin >> txt;
 
-do {
+    do
+    {
 
-    cout << "Acesso ao predio" << endl;
-    cout << "1) Entrada" << endl;
-    cout << "2) Saida" << endl;
-    cout << "3) Registro manual" << endl;
-    cout << "4) Cadastro de usuario" << endl;
-    cout << "5) Relatorio" << endl;
-    cout << "6) Configuracao" << endl;
-    cout << "0) Sair" << endl;
+        cout << "Acesso ao predio" << endl;
+        cout << "1) Entrada" << endl;
+        cout << "2) Saida" << endl;
+        cout << "3) Registro manual" << endl;
+        cout << "4) Cadastro de usuario" << endl;
+        cout << "5) Relatorio" << endl;
+        cout << "6) Configuracao" << endl;
+        cout << "0) Sair" << endl;
 
-    cout << "Escolha uma opcao: ";
-    cin >> escolha;
+        cout << "Escolha uma opcao: ";
+        cin >> escolha;
 
-    cout << endl;
+        cout << endl;
 
-    switch (escolha) {
+        switch (escolha)
+        {
 
         case 1:
         {
@@ -69,15 +76,16 @@ do {
             cout << "Ano: ";
             cin >> ano;
 
-        d = new Data(hora, minuto, segundo, dia, mes, ano);
+            d = new Data(hora, minuto, segundo, dia, mes, ano);
 
-        //condicao
-        cout << "Catraca " << catraca << " travada" << endl;
-
-        //else condicao
-        cout << "Catraca " << catraca << "abriu: id " << id << endl;
-
-
+            if (c0->entrar(id, d) != true)
+            {
+                cout << "[Entrada] Catraca " << catraca << " travada" << endl
+                     << endl;
+            }
+            // condicao
+            cout << "Catraca " << catraca << "abriu: id " << id << endl
+                 << endl;
         }
 
         case 2:
@@ -97,12 +105,17 @@ do {
             cout << "mes: ";
             cin >> mes;
             cout << "Ano: ";
-            cin >> ano;  
-            
+            cin >> ano;
+
             d = new Data(hora, minuto, segundo, dia, mes, ano);
 
-            //condicao
-            cout << "Catraca " << catraca << "abriu: id " << id << endl;
+            if (c1->sair(id, d) != true)
+            {
+                cout << "[Saida] Catraca " << catraca << " travada" << endl
+                     << endl;
+            }
+            cout << "Saida " << catraca << "abriu: id " << id << endl
+                 << endl;
 
             break;
         }
@@ -126,12 +139,12 @@ do {
             cin >> mes;
             cout << "Ano: ";
             cin >> ano;
-            
+
             d = new Data(hora, minuto, segundo, dia, mes, ano);
 
-            //condicao
+            // condicao
             cout << "Entrada manual registrada: id " << id << endl;
-            
+
             break;
         }
 
@@ -141,10 +154,11 @@ do {
             cout << "Tipo (v, a ou f): ";
             cin >> tipo;
 
-            if(tipo == 'v'){
-                Data* dataInicio;
-                Data* dataFim;
-                
+            if (tipo == 'v')
+            {
+                Data *dataInicio;
+                Data *dataFim;
+
                 cout << "Id: ";
                 cin >> id;
                 cout << "Nome: ";
@@ -181,29 +195,31 @@ do {
 
                 dataFim = new Data(hora, minuto, segundo, dia, mes, ano);
 
-                Visitante *v = new Visitante(id,nome,dataInicio,dataFim);
+                Visitante *v = new Visitante(id, nome, dataInicio, dataFim);
                 g->adicionar(v);
                 cout << "Visitante cadastrado com sucesso";
             }
-            if(tipo == 'a'){
+            if (tipo == 'a')
+            {
                 cout << "Id: ";
                 cin >> id;
                 cout << "Nome: ";
                 cin >> nome;
 
-                Aluno *a = new Aluno(id,nome);
-                g->adicionar(a);
+                aluno = new Aluno(id, nome);
+                g->adicionar(aluno);
                 cout << "Aluno cadastrado com sucesso";
             }
 
-            if(tipo == 'f'){
+            if (tipo == 'f')
+            {
                 cout << "Id: ";
                 cin >> id;
                 cout << "Nome: ";
                 cin >> nome;
 
-                Funcionario *f = new Funcionario(id,nome);
-                g->adicionar(f);
+                funcionario = new Funcionario(id, nome);
+                g->adicionar(funcionario);
                 cout << "Funcionario cadastrado com sucesso";
             }
 
@@ -216,11 +232,17 @@ do {
             cin >> mes;
             cout << "ano";
             cin >> ano;
-            
-            cout << "Relatorio de horas trabalhadas" << endl;
-            cout << nome << ": ";
-            //cout << getHorasTrabalhadas() << endl;
 
+            cout << "Relatorio de horas trabalhadas" << endl;
+
+            for (int i = 0; i < g->getUsuarios()->size(); i++)
+            {
+                Funcionario *func = dynamic_cast<Funcionario *>(g->getUsuarios()->at(i));
+                if (funcionario != nullptr)
+                {
+                    cout << funcionario->getNome() << " Horas trabalhadas: " << funcionario->getHorasTrabalhadas(mes, ano) << endl;
+                }
+            }
             break;
         }
 
@@ -231,7 +253,7 @@ do {
             cin >> hora;
             cout << "Minuto: ";
             cin >> minuto;
-            
+
             break;
         }
 
@@ -239,13 +261,12 @@ do {
         {
             cout << "Deseja salvar usuarios (s/n)";
             cin >> resposta;
-            
-            //codigo salvando usuarios
+
+            // codigo salvando usuarios
 
             break;
         }
-    }
-    
-} while (escolha != 0);
+        }
 
+    } while (escolha != 0);
 }
