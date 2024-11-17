@@ -13,9 +13,8 @@ bool Catraca::entrar(int id, Data* d){
         return false;
     }
 
-    Usuario* u = g->getUsuario(id);
-    if(u != nullptr)
-        return u->entrar(d);
+    if(g->getUsuario(id) != nullptr && g->getUsuario(id)->entrar(d) == true)
+        return g->getUsuario(id)->entrar(d);
     return false;
 }
 
@@ -24,8 +23,7 @@ bool Catraca::sair(int id, Data* d){
         return false;
     }
 
-    Usuario* u = g->getUsuario(id);
-    if(u != nullptr)
-        return u->sair(d);
+    if(g->getUsuario(id) != nullptr && g->getUsuario(id)->sair(d) == true)
+        return g->getUsuario(id)->sair(d);
     return false;
 }
