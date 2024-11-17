@@ -7,7 +7,7 @@
 #include <string>
 
 
-class Funcionario : Usuario {
+class Funcionario : public Usuario {
 
     private:
         int id;
