@@ -231,9 +231,9 @@ void menu()
 
         case 5:
         {
-            cout << "mes: ";
+            cout << "Mes: ";
             cin >> mes;
-            cout << "ano";
+            cout << "Ano: ";
             cin >> ano;
 
             cout << "Relatorio de horas trabalhadas" << endl;
@@ -243,7 +243,7 @@ void menu()
                 Funcionario *func = dynamic_cast<Funcionario *>(g->getUsuarios()->at(i));
                 if (funcionario != nullptr)
                 {
-                    cout << funcionario->getNome() << " Horas trabalhadas: " << funcionario->getHorasTrabalhadas(mes, ano) << endl;
+                    cout << func->getNome() << ": " << func->getHorasTrabalhadas(mes, ano) << endl;
                 }
             }
             break;
@@ -256,6 +256,8 @@ void menu()
             cin >> hora;
             cout << "Minuto: ";
             cin >> minuto;
+
+            aluno->setHorarioFim(hora, minuto);
 
             break;
         }
