@@ -223,7 +223,7 @@ void menu()
 
                 funcionario = new Funcionario(id, nome);
                 g->adicionar(funcionario);
-                cout << "Funcionario cadastrado com sucesso";
+                cout << "Funcionario cadastrado com sucesso" << endl << endl;
             }
 
             break;
@@ -236,7 +236,7 @@ void menu()
             cout << "Ano: ";
             cin >> ano;
 
-            cout << "Relatorio de horas trabalhadas" << endl;
+            cout << endl <<"Relatorio de horas trabalhadas" << endl;
 
             for (int i = 0; i < g->getUsuarios()->size(); i++)
             {
@@ -244,8 +244,9 @@ void menu()
                 if (funcionario != nullptr)
                 {
                     cout << func->getNome() << ": " << func->getHorasTrabalhadas(mes, ano) << endl;
-                }
+                }        
             }
+            cout << endl;
             break;
         }
 
