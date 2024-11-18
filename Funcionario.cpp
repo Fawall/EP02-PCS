@@ -34,11 +34,10 @@ bool Funcionario::entrar(Data *d) {
         return true;
     }
 
-    // int diferenca = d->diferenca((*registros)[registros->size() - 1]->getData());
     Registro* ultimoRegistro = (*registros)[registros->size() - 1];
 
     if(dynamic_cast<Entrada*>(ultimoRegistro) != nullptr && 
-     d->diferenca((*registros)[registros->size() - 1]->getData()) > 0) {
+     d->diferenca((*registros)[registros->size() - 1]->getData()) >= 0) {
         return false;
     } else {
         registros->push_back(e);
@@ -59,7 +58,7 @@ bool Funcionario::sair(Data *d) {
     Registro* ultimoRegistro = (*registros)[registros->size() - 1];
 
     if(dynamic_cast<Saida*>(ultimoRegistro) != nullptr && 
-     d->diferenca((*registros)[registros->size() - 1]->getData()) > 0) {
+     d->diferenca((*registros)[registros->size() - 1]->getData()) >= 0) {
         return false;
     } else {
         registros->push_back(s);
@@ -99,7 +98,7 @@ bool Funcionario::registrarSaidaManual(Data *d) {
     Registro* ultimoRegistro = (*registros)[registros->size() - 1];
 
     if(dynamic_cast<Saida*>(ultimoRegistro) != nullptr && 
-     d->diferenca((*registros)[registros->size() - 1]->getData()) > 0) {
+     d->diferenca((*registros)[registros->size() - 1]->getData()) >= 0) {
         return false;
     } else {
         registros->push_back(s);
@@ -125,8 +124,8 @@ int Funcionario::getHorasTrabalhadas(int mes, int ano) {
             if(dynamic_cast<Entrada*>(r) != nullptr) {
                 if(i + 1 < registros->size()) {
                     Registro* r2 = (*registros)[i + 1];
-                    if(dynamic_cast<Saida*>(r2) != nullptr) {
-                        horas += (r2->getData()->diferenca(r->getData()))/3600;
+                    if(dynamic_cast<Saida*>(r2) != nullptr) {                                 
+                        horas += r2->getData()->diferenca(r->getData()) / 3600;
                     }
                 }
             }
@@ -134,6 +133,7 @@ int Funcionario::getHorasTrabalhadas(int mes, int ano) {
     }
     return horas;
 }
+
 
 string Funcionario::getNome() {
     return this->nome;
