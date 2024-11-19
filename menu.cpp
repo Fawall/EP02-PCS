@@ -8,6 +8,7 @@
 #include "Registro.h"
 #include "Visitante.h"
 #include "Funcionario.h"
+#include "PersistenciaDeUsuario.h"
 
 using namespace std;
 
@@ -24,7 +25,7 @@ void menu()
     int escolha, id, mes, ano, hora, minuto, segundo, dia, catraca;
     char resposta, tipo, opcao;
     bool verifica;
-    string nome;
+    string nome, arquivo;
 
     GerenciadorDeUsuario *g = new GerenciadorDeUsuario();
 
@@ -34,8 +35,20 @@ void menu()
     cout << "Deseja carregar usuarios (s/n): ";
     cin >> resposta;
 
-    cout << "Arquivo: ";
-    // cin >> txt;
+
+    if(resposta == 's'){
+        cout << "Arquivo: ";
+        cin >> arquivo;
+        
+        PersistenciaDeUsuario *p = new PersistenciaDeUsuario();
+
+        vector<Usuario*> *usuarios = p->carregar(arquivo);
+
+        for(int i = 0; i < usuarios->size(); i++){
+            g->adicionar((*usuarios)[i]);
+        }
+
+    }
 
     do
     {
@@ -241,7 +254,7 @@ void menu()
             for (int i = 0; i < g->getUsuarios()->size(); i++)
             {
                 Funcionario *func = dynamic_cast<Funcionario *>(g->getUsuarios()->at(i));
-                if (funcionario != nullptr)
+                if (func != nullptr)
                 {
                     cout << func->getNome() << ": " << func->getHorasTrabalhadas(mes, ano) << endl;
                 }        

@@ -27,7 +27,7 @@ vector<Usuario *> *PersistenciaDeUsuario::carregar(string arquivo)
     int id;
     char tipo;
 
-    entrada.open(arquivo + ".txt");
+    entrada.open(arquivo);
 
     // Verificar existência de um Arquivo
     if (entrada.fail())
@@ -156,6 +156,7 @@ vector<Usuario *> *PersistenciaDeUsuario::carregar(string arquivo)
 
         // cout << (*usuarios)[0]->getNome() << endl;
     }
+    return usuarios;
 
     entrada.close();
 }
