@@ -9,9 +9,6 @@
 
 class PersistenciaDeUsuario {
 
-private:
-    string arquivo;
-
 public:
     PersistenciaDeUsuario();
     virtual ~PersistenciaDeUsuario();
