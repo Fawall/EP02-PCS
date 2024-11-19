@@ -156,9 +156,9 @@ vector<Usuario *> *PersistenciaDeUsuario::carregar(string arquivo)
 
         // cout << (*usuarios)[0]->getNome() << endl;
     }
+    entrada.close();
     return usuarios;
 
-    entrada.close();
 }
 
 void PersistenciaDeUsuario::salvar(string arquivo, vector<Usuario *> *v)
