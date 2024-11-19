@@ -2,20 +2,35 @@
 #include "Usuario.h"
 #include <stdexcept>
 #include <fstream>
+#include "Aluno.h"
 
 PersistenciaDeUsuario::PersistenciaDeUsuario() {}
 
 PersistenciaDeUsuario::~PersistenciaDeUsuario() {}
 
 vector<Usuario*>* PersistenciaDeUsuario::carregar(string arquivo) {
+    vector<Usuario*> *usuarios = new vector<Usuario*>();
 
-    //vector<Usuario*>* usuarios = new vector<Usuario>;
-    ofstream entrada;
+    ifstream entrada;
+    string linha, nome;
+    int id;
+    char tipo;
+
+    entrada.open(arquivo+".txt");
 
     //Verificar existência de um Arquivo
-    if (!std::ifstream(arquivo)) {
+    if (entrada.fail() ) {
         throw new logic_error("Arquivo não encontrado ou formato incorreto");
     }
+
+    while(entrada >> tipo >> id >> nome){
+        if(tipo == 'A'){
+            Aluno *a = new Aluno(id, nome);
+            usuarios->push_back(a);
+        }
+    }
+
+    cout << (*usuarios)[1]->getNome() << endl;
 
     entrada.close();
     //return usuarios;
