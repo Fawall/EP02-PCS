@@ -158,15 +158,6 @@ vector<Usuario *> *PersistenciaDeUsuario::carregar(string arquivo)
     }
 
     entrada.close();
-    for (int i = 0; i < usuarios->size(); i++)
-    {
-        if (dynamic_cast<Funcionario *>(usuarios->at(i)) != nullptr)
-        {
-            cout << dynamic_cast<Funcionario *>(usuarios->at(i))->getNome() << endl;
-            cout << dynamic_cast<Funcionario *>(usuarios->at(i))->getRegistros()->size() << endl;
-            cout << dynamic_cast<Funcionario *>(usuarios->at(i))->getHorasTrabalhadas(9, 2024);
-        }
-    }
 }
 
 void PersistenciaDeUsuario::salvar(string arquivo, vector<Usuario *> *v)
