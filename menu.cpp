@@ -50,9 +50,10 @@ void menu()
                 g->adicionar((*usuarios)[i]);
             }
         }
-        catch(logic_error *e)
+        catch (logic_error *e)
         {
-            cout << e->what() << endl << endl;
+            cout << e->what() << endl
+                 << endl;
         }
     }
 
@@ -78,41 +79,56 @@ void menu()
 
         case 1:
         {
-            cout << "Catraca: ";
-            cin >> catraca;
-            cout << "Id: ";
-            cin >> id;
-            cout << "Hora: ";
-            cin >> hora;
-            cout << "Minuto: ";
-            cin >> minuto;
-            cout << "Segundo: ";
-            cin >> segundo;
-            cout << "dia: ";
-            cin >> dia;
-            cout << "mes: ";
-            cin >> mes;
-            cout << "Ano: ";
-            cin >> ano;
-
-            d = new Data(hora, minuto, segundo, dia, mes, ano);
-
-            if (c0->entrar(id, d) != true)
+            try
             {
-                cout << "[Entrada] Catraca " << catraca << " travada" << endl
+                cout << "Catraca: ";
+                cin >> catraca;
+                cout << "Id: ";
+                cin >> id;
+                cout << "Hora: ";
+                cin >> hora;
+                cout << "Minuto: ";
+                cin >> minuto;
+                cout << "Segundo: ";
+                cin >> segundo;
+                cout << "dia: ";
+                cin >> dia;
+                cout << "mes: ";
+                cin >> mes;
+                cout << "Ano: ";
+                cin >> ano;
+
+                d = new Data(hora, minuto, segundo, dia, mes, ano);
+
+                if (c0->entrar(id, d) != true)
+                {
+                    cout << "[Entrada] Catraca " << catraca << " travada" << endl
+                         << endl;
+                }
+                else
+                {
+                    cout << "[Entrada] Catraca " << catraca << " abriu: id " << id << endl
+                         << endl;
+                }
+            }
+            catch (invalid_argument *e)
+            {
+                cout << e->what() << endl
                      << endl;
             }
-            else
+            catch (logic_error *e)
             {
-                cout << "[Entrada] Catraca " << catraca << " abriu: id " << id << endl
+                cout << e->what() << endl
                      << endl;
             }
+
             break;
         }
 
         case 2:
         {
-            try{
+            try
+            {
                 cout << "Catraca: ";
                 cin >> catraca;
                 cout << "Id: ";
@@ -143,43 +159,56 @@ void menu()
                          << endl;
                 }
             }
-            catch(invalid_argument *e)
+            catch (invalid_argument *e)
             {
-                cout << e->what() << endl << endl;
+                cout << e->what() << endl
+                     << endl;
             }
-            
+            catch (logic_error *e)
+            {
+                cout << e->what() << endl
+                     << endl;
+            }
+
             break;
         }
 
         case 3:
         {
-            try {
-            cout << "Entrada (e) ou Saida (s)? ";
-            cin >> opcao;
-
-            cout << "Id: ";
-            cin >> id;
-            cout << "Hora: ";
-            cin >> hora;
-            cout << "Minuto: ";
-            cin >> minuto;
-            cout << "Segundo: ";
-            cin >> segundo;
-            cout << "dia: ";
-            cin >> dia;
-            cout << "mes: ";
-            cin >> mes;
-            cout << "Ano: ";
-            cin >> ano;
-
-            d = new Data(hora, minuto, segundo, dia, mes, ano);
-
-            // condicao
-            cout << "Entrada manual registrada: id " << id << endl;
-            }
-            catch(invalid_argument *e)
+            try
             {
-                cout << e->what() << endl << endl;
+                cout << "Entrada (e) ou Saida (s)? ";
+                cin >> opcao;
+
+                cout << "Id: ";
+                cin >> id;
+                cout << "Hora: ";
+                cin >> hora;
+                cout << "Minuto: ";
+                cin >> minuto;
+                cout << "Segundo: ";
+                cin >> segundo;
+                cout << "dia: ";
+                cin >> dia;
+                cout << "mes: ";
+                cin >> mes;
+                cout << "Ano: ";
+                cin >> ano;
+
+                d = new Data(hora, minuto, segundo, dia, mes, ano);
+
+                // condicao
+                cout << "Entrada manual registrada: id " << id << endl;
+            }
+            catch (invalid_argument *e)
+            {
+                cout << e->what() << endl
+                     << endl;
+            }
+            catch (logic_error *e)
+            {
+                cout << e->what() << endl
+                     << endl;
             }
 
             break;
@@ -210,7 +239,7 @@ void menu()
                     cin >> segundo;
                     cout << "dia: ";
                     cin >> dia;
-                    cout << "mes: ";
+                    cout << "Mes: ";
                     cin >> mes;
                     cout << "Ano: ";
                     cin >> ano;
@@ -226,7 +255,7 @@ void menu()
                     cin >> segundo;
                     cout << "dia: ";
                     cin >> dia;
-                    cout << "mes: ";
+                    cout << "Mes: ";
                     cin >> mes;
                     cout << "Ano: ";
                     cin >> ano;
@@ -269,40 +298,67 @@ void menu()
                 cout << e->what() << endl
                      << endl;
             }
+            catch (logic_error *e)
+            {
+                cout << e->what() << endl
+                     << endl;
+            }
             break;
         }
 
         case 5:
         {
-            cout << "Mes: ";
-            cin >> mes;
-            cout << "Ano: ";
-            cin >> ano;
-
-            cout << endl
-                 << "Relatorio de horas trabalhadas" << endl;
-
-            for (int i = 0; i < g->getUsuarios()->size(); i++)
+            try
             {
-                Funcionario *func = dynamic_cast<Funcionario *>(g->getUsuarios()->at(i));
-                if (func != nullptr)
+                cout << "Mes: ";
+                cin >> mes;
+                cout << "Ano: ";
+                cin >> ano;
+
+                cout << endl
+                     << "Relatorio de horas trabalhadas" << endl;
+
+                for (int i = 0; i < g->getUsuarios()->size(); i++)
                 {
-                    cout << func->getNome() << ": " << func->getHorasTrabalhadas(mes, ano) << endl;
+                    Funcionario *func = dynamic_cast<Funcionario *>(g->getUsuarios()->at(i));
+                    if (func != nullptr)
+                    {
+                        cout << func->getNome() << ": " << func->getHorasTrabalhadas(mes, ano) << endl;
+                    }
                 }
+                cout << endl;
             }
-            cout << endl;
+            catch (invalid_argument *e)
+            {
+                cout << e->what() << endl
+                     << endl;
+            }
+            catch (logic_error *e)
+            {
+                cout << e->what() << endl
+                     << endl;
+            }
+
             break;
         }
 
         case 6:
         {
-            cout << "Horario de fim da janela dos Alunos" << endl;
-            cout << "Hora: ";
-            cin >> hora;
-            cout << "Minuto: ";
-            cin >> minuto;
+            try
+            {
+                cout << "Horario de fim da janela dos Alunos" << endl;
+                cout << "Hora: ";
+                cin >> hora;
+                cout << "Minuto: ";
+                cin >> minuto;
 
-            aluno->setHorarioFim(hora, minuto);
+                aluno->setHorarioFim(hora, minuto);
+            }
+            catch(logic_error *e)
+            {
+                cout << e->what() << endl
+                     << endl;
+            }
 
             break;
         }
@@ -317,11 +373,19 @@ void menu()
                 cout << "Arquivo: ";
                 cin >> arquivo;
                 PersistenciaDeUsuario *p = new PersistenciaDeUsuario();
-                try{
+                try
+                {
                     p->salvar(arquivo, g->getUsuarios());
-
-                }catch(logic_error *e){
-                    cout << e->what() << endl << endl;
+                }
+                catch (logic_error *e)
+                {
+                    cout << e->what() << endl
+                         << endl;
+                }
+                catch(invalid_argument *e)
+                {
+                    cout << e->what() << endl
+                         << endl;
                 }
             }
 
