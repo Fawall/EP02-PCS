@@ -354,7 +354,7 @@ void menu()
 
                 aluno->setHorarioFim(hora, minuto);
             }
-            catch(logic_error *e)
+            catch (logic_error *e)
             {
                 cout << e->what() << endl
                      << endl;
@@ -382,14 +382,7 @@ void menu()
                     cout << e->what() << endl
                          << endl;
                 }
-                catch(invalid_argument *e)
-                {
-                    cout << e->what() << endl
-                         << endl;
-                }
             }
-
-            // codigo salvando usuarios
 
             break;
         }
