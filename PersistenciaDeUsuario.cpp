@@ -32,7 +32,7 @@ vector<Usuario *> *PersistenciaDeUsuario::carregar(string arquivo)
     // Verificar existência de um Arquivo
     if (entrada.fail())
     {
-        throw new logic_error("Arquivo não encontrado ou formato incorreto");
+        throw new logic_error("Arquivo nao encontrado ou formato incorreto");
     }
 
     while (getline(entrada, linha))
@@ -163,17 +163,38 @@ vector<Usuario *> *PersistenciaDeUsuario::carregar(string arquivo)
 
 void PersistenciaDeUsuario::salvar(string arquivo, vector<Usuario *> *v)
 {
-
     ofstream entrada;
 
-    entrada.open(this->arquivo, ios_base::app);
+    entrada.open(arquivo, ios_base::app);
 
-    // entrada << v->get << endl;
+    if(entrada.fail()){
+        throw new logic_error("Arquivo nao encontrado ou formato incorreto");
+    }
+
+    for(int i = 0; i < v->size(); i++){
+        Aluno* a = dynamic_cast<Aluno* >(v->at(i));
+        if(a != nullptr){
+            entrada << "A " << a->getId() << " " << a->getNome() << endl;
+        }
+        Funcionario* f = dynamic_cast<Funcionario* >(v->at(i));
+        if(f != nullptr){
+            entrada << "F " << f->getId() << " " << f->getNome() << endl;
+            cout << f->getRegistros()->size() << endl;
+            for(int i =0; i < f->getRegistros()->size(); i++){
+                if(dynamic_cast<Entrada* >(f->getRegistros()->at(i)) != nullptr){
+                    entrada << "E " << f->getRegistros()->at(i)->getData()->getHora() << " " << f->getRegistros()->at(i)->getData()->getMinuto() << " " << f->getRegistros()->at(i)->getData()->getSegundo() << " " << f->getRegistros()->at(i)->getData()->getDia() << " " << f->getRegistros()->at(i)->getData()->getMes() << " " << f->getRegistros()->at(i)->getData()->getAno() << " " << f->getRegistros()->at(i)->isManual()  << endl;
+                }
+                if(dynamic_cast<Saida* >(f->getRegistros()->at(i)) != nullptr){
+                    entrada << "S " << f->getRegistros()->at(i)->getData()->getHora() << " " << f->getRegistros()->at(i)->getData()->getMinuto() << " " << f->getRegistros()->at(i)->getData()->getSegundo() << " " << f->getRegistros()->at(i)->getData()->getDia() << " " << f->getRegistros()->at(i)->getData()->getMes() << " " << f->getRegistros()->at(i)->getData()->getAno() << " " << f->getRegistros()->at(i)->isManual() << endl;
+                }
+            }
+        }
+        Visitante* vi = dynamic_cast<Visitante* >(v->at(i));
+        if(vi != nullptr){
+            entrada << "V " << vi->getId() << " " << vi->getNome() << " " << vi->getDataInicio()->getHora() << " " << vi->getDataInicio()->getMinuto() << " " << vi->getDataInicio()->getSegundo() << " " << vi->getDataInicio()->getDia() << " " << vi->getDataInicio()->getMes() << " " << vi->getDataInicio()->getAno() << " " << vi->getDataFim()->getHora() << " " << vi->getDataFim()->getMinuto() << " " << vi->getDataFim()->getSegundo() << " " << vi->getDataFim()->getDia() << " " << vi->getDataFim()->getMes() << " " << vi->getDataFim()->getAno() << endl;
+        }
+
+    }
 
     entrada.close();
-
-    //    if (!arquivoSaida.is_open()) {
-    //         // Lança uma exceção logic_error se o arquivo não puder ser aberto
-    //         throw new logic_error("Erro ao abrir o arquivo para salvar");
-    //     }
 }
