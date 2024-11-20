@@ -14,17 +14,14 @@ using namespace std;
 
 void menu()
 {
-
-    Usuario *usuario;
     Funcionario *funcionario;
-    Visitante *visitante;
     Aluno *aluno;
 
     Data *d;
 
     int escolha, id, mes, ano, hora, minuto, segundo, dia, catraca;
     char resposta, tipo, opcao;
-    bool verifica;
+    
     string nome, arquivo;
 
     GerenciadorDeUsuario *g = new GerenciadorDeUsuario();
@@ -45,7 +42,7 @@ void menu()
         {
             vector<Usuario *> *usuarios = p->carregar(arquivo);
 
-            for (int i = 0; i < usuarios->size(); i++)
+            for (unsigned int i = 0; i < usuarios->size(); i++)
             {
                 g->adicionar((*usuarios)[i]);
             }
@@ -318,7 +315,7 @@ void menu()
                 cout << endl
                      << "Relatorio de horas trabalhadas" << endl;
 
-                for (int i = 0; i < g->getUsuarios()->size(); i++)
+                for (unsigned int i = 0; i < g->getUsuarios()->size(); i++)
                 {
                     Funcionario *func = dynamic_cast<Funcionario *>(g->getUsuarios()->at(i));
                     if (func != nullptr)
