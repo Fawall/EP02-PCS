@@ -20,7 +20,7 @@ Funcionario::Funcionario(int id, string nome, vector<Registro* >* registros) : U
 }   
 
 Funcionario::~Funcionario() {
-    for(int i = 0; i < registros->size(); i++) {
+    for(unsigned int i = 0; i < registros->size(); i++) {
         delete (*registros)[i];
     }
     delete registros;
@@ -118,7 +118,7 @@ int Funcionario::getHorasTrabalhadas(int mes, int ano) {
     
     int horas = 0;
 
-    for(int i = 0; i < registros->size(); i++) {
+    for(unsigned int i = 0; i < registros->size(); i++) {
         Registro* r = (*registros)[i];
         if(r->getData()->getMes() == mes && r->getData()->getAno() == ano) {
             if(dynamic_cast<Entrada*>(r) != nullptr) {
