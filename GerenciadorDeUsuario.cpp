@@ -18,7 +18,7 @@ GerenciadorDeUsuario::GerenciadorDeUsuario(vector<Usuario*> usuarios) {
 
 void GerenciadorDeUsuario::adicionar(Usuario* u) {
     
-    for(int i = 0; i < usuarios->size(); i++){
+    for(unsigned int i = 0; i < usuarios->size(); i++){
         if(usuarios->at(i)->getId() == u->getId())
             throw new invalid_argument("Usuario ja existe");
     }
@@ -26,7 +26,7 @@ void GerenciadorDeUsuario::adicionar(Usuario* u) {
 }
 
 Usuario* GerenciadorDeUsuario::getUsuario(int id){
-    for(int i = 0; i < usuarios->size(); i++){
+    for(unsigned int i = 0; i < usuarios->size(); i++){
         if(usuarios->at(i)->getId() == id)
             return usuarios->at(i);
     }
