@@ -171,7 +171,7 @@ void PersistenciaDeUsuario::salvar(string arquivo, vector<Usuario *> *v)
         throw new logic_error("Arquivo nao encontrado ou formato incorreto");
     }
 
-    for(int i = 0; i < v->size(); i++){
+    for(unsigned int i = 0; i < v->size(); i++){
         Aluno* a = dynamic_cast<Aluno* >(v->at(i));
         if(a != nullptr){
             entrada << "A " << a->getId() << " " << a->getNome() << endl;
@@ -180,7 +180,7 @@ void PersistenciaDeUsuario::salvar(string arquivo, vector<Usuario *> *v)
         if(f != nullptr){
             entrada << "F " << f->getId() << " " << f->getNome() << endl;
             cout << f->getRegistros()->size() << endl;
-            for(int i =0; i < f->getRegistros()->size(); i++){
+            for(unsigned int i =0; i < f->getRegistros()->size(); i++){
                 if(dynamic_cast<Entrada* >(f->getRegistros()->at(i)) != nullptr){
                     entrada << "E " << f->getRegistros()->at(i)->getData()->getHora() << " " << f->getRegistros()->at(i)->getData()->getMinuto() << " " << f->getRegistros()->at(i)->getData()->getSegundo() << " " << f->getRegistros()->at(i)->getData()->getDia() << " " << f->getRegistros()->at(i)->getData()->getMes() << " " << f->getRegistros()->at(i)->getData()->getAno() << " " << f->getRegistros()->at(i)->isManual()  << endl;
                 }
