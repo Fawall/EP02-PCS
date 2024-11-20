@@ -185,7 +185,7 @@ do {
             break;
         }
     }
-    
+    5
 } while (escolha != 0);
 
 }
