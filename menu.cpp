@@ -21,7 +21,7 @@ void menu()
 
     int escolha, id, mes, ano, hora, minuto, segundo, dia, catraca;
     char resposta, tipo, opcao;
-    
+
     string nome, arquivo;
 
     GerenciadorDeUsuario *g = new GerenciadorDeUsuario();
@@ -362,7 +362,7 @@ void menu()
 
         case 0:
         {
-            cout << "Deseja salvar usuarios (s/n)";
+            cout << "Deseja salvar usuarios (s/n): ";
             cin >> resposta;
 
             if (resposta == 's')
