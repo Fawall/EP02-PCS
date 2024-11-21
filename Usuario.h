@@ -17,13 +17,13 @@ class Usuario {
         Usuario(int id, string nome);
         virtual ~Usuario();
 
-        string getNome();
-        int getId();
+        virtual string getNome();
+        virtual int getId();
 
-        virtual bool entrar(Data *d);
-        virtual bool sair(Data *d);
-        virtual bool registrarEntradaManual(Data *d);
-        virtual bool registrarSaidaManual(Data *d);
+        virtual bool entrar(Data *d) = 0;
+        virtual bool sair(Data *d) = 0;
+        virtual bool registrarEntradaManual(Data *d) = 0;
+        virtual bool registrarSaidaManual(Data *d) = 0;
 
 
 };

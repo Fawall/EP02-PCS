@@ -4,7 +4,7 @@
 #include "Usuario.h"
 #include <string>
 
-class Aluno : Usuario
+class Aluno : public Usuario
 {
 
 private:
@@ -23,9 +23,9 @@ public:
     static int getMinutoFim();
 
     bool entrar(Data *d);
-    bool sair();
-    bool registrarEntradaManual();
-    bool registrarSaidaManual();
+    bool sair(Data* d);
+    bool registrarEntradaManual(Data *d);
+    bool registrarSaidaManual(Data *d);
 
 };
 

@@ -7,7 +7,7 @@
 #include <string>
 
 
-class Funcionario : Usuario {
+class Funcionario : public Usuario {
 
     private:
         int id;
@@ -27,6 +27,8 @@ class Funcionario : Usuario {
         bool sair(Data *d);
         bool registrarEntradaManual(Data *d);
         bool registrarSaidaManual(Data *d);
+        string getNome();
+        int getId();
         
 };
 

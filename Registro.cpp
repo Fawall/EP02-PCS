@@ -6,8 +6,8 @@ using namespace std;
 
 Registro::Registro(Data *d, bool manual) {
 
-    this->d = d;               //como eh um objeto, preciso inicializar ele
-    this->manual = manual;      //diferente desse, que é um atributo
+    this->d = d;               
+    this->manual = manual;      
 
     if (d == nullptr) {
         throw new invalid_argument ("data invalida");

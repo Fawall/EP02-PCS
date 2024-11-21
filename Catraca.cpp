@@ -9,23 +9,21 @@ Catraca::Catraca(GerenciadorDeUsuario *g){
 Catraca::~Catraca() {}
 
 bool Catraca::entrar(int id, Data* d){
-    if(g->getUsuarios().size() == 0 ){
+    if(g->getUsuarios()->size() == 0 ){
         return false;
     }
 
-    Usuario* u = g->getUsuario(id);
-    if(u != nullptr)
-        return u->entrar(d);
+    if(g->getUsuario(id) != nullptr)
+        return g->getUsuario(id)->entrar(d);
     return false;
 }
 
 bool Catraca::sair(int id, Data* d){
-    if(g->getUsuarios().size() == 0 ){
+    if(g->getUsuarios()->size() == 0 ){
         return false;
     }
 
-    Usuario* u = g->getUsuario(id);
-    if(u != nullptr)
-        return u->sair(d);
+    if(g->getUsuario(id) != nullptr)
+        return g->getUsuario(id)->sair(d);
     return false;
 }

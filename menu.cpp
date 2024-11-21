@@ -386,13 +386,7 @@ void menu()
 
             break;
         }
-<<<<<<< HEAD
-    }
-    5
-} while (escolha != 0);
-=======
         }
->>>>>>> main
 
     } while (escolha != 0);
 }

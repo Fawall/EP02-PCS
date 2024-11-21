@@ -4,7 +4,7 @@
 #include "Usuario.h"
 #include "Data.h"
 
-class Visitante : Usuario
+class Visitante : public Usuario
 {
 
 private:
@@ -24,6 +24,9 @@ public:
     bool sair(Data *d);
     bool registrarEntradaManual(Data* d);
     bool registrarSaidaManual(Data* d);
+
+    string getNome();
+    int getId();
 
 
 };
