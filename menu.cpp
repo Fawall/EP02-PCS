@@ -261,7 +261,7 @@ void menu()
 
                     Visitante *v = new Visitante(id, nome, dataInicio, dataFim);
                     g->adicionar(v);
-                    cout << "Visitante cadastrado com sucesso" << endl
+                    cout << "Usuario cadastrado com sucesso" << endl
                          << endl;
                 }
                 if (tipo == 'a')
@@ -286,7 +286,7 @@ void menu()
 
                     funcionario = new Funcionario(id, nome);
                     g->adicionar(funcionario);
-                    cout << "Funcionario cadastrado com sucesso" << endl
+                    cout << "Usuario cadastrado com sucesso" << endl
                          << endl;
                 }
             }
