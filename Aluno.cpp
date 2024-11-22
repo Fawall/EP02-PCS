@@ -20,13 +20,17 @@ void Aluno::setHorarioFim(int hora, int minuto) {
         throw new logic_error("Hora invalida");
     if(minuto < 0 || minuto > 59)
         throw new logic_error("Minuto invalido");
+
     Aluno::horaFim = hora;    
+    Aluno::minutoFim = minuto;
 }
 
 bool Aluno::entrar(Data *d) {
-    if(d->getHora() < 6 || d->getHora() > 22 && d->getMinuto() > 59 )
-        return false;
-    return true;
+    if ((d->getHora() > HORARIO_INICIO || (d->getHora() == HORARIO_INICIO && d->getMinuto() >= 0)) &&
+        (d->getHora() < getHoraFim() || (d->getHora() == getHoraFim() && d->getMinuto() <= getMinutoFim() ))) {
+        return true;
+    }
+    return false;
 }
 
 bool Aluno::sair(Data *d) {

@@ -1,10 +1,12 @@
 #include "Visitante.h"
 #include <stdexcept>
+#include <iostream>
 
-
+using namespace std;
 
 Visitante::Visitante(int id, string nome, Data* inicio, Data* fim ) : Usuario(id, nome) {
-    if(inicio == nullptr || inicio == 0 || fim == nullptr || fim == 0 || fim < inicio)
+
+    if(inicio == nullptr || fim == nullptr || fim->getDia() < inicio->getDia() && fim->getMes() < inicio->getMes())
         throw new logic_error("Data invalida");
 
 

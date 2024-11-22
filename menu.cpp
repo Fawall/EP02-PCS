@@ -195,7 +195,7 @@ void menu()
                 d = new Data(hora, minuto, segundo, dia, mes, ano);
 
                 // condicao
-                cout << "Entrada manual registrada: id " << id << endl;
+                cout << "Entrada manual registrada: id " << id << endl << endl;
             }
             catch (invalid_argument *e)
             {
@@ -261,7 +261,7 @@ void menu()
 
                     Visitante *v = new Visitante(id, nome, dataInicio, dataFim);
                     g->adicionar(v);
-                    cout << "Visitante cadastrado com sucesso" << endl
+                    cout << "Usuario cadastrado com sucesso" << endl
                          << endl;
                 }
                 if (tipo == 'a')
@@ -273,7 +273,7 @@ void menu()
 
                     aluno = new Aluno(id, nome);
                     g->adicionar(aluno);
-                    cout << "Aluno cadastrado com sucesso" << endl
+                    cout << "Usuario cadastrado com sucesso" << endl
                          << endl;
                 }
 
@@ -286,7 +286,7 @@ void menu()
 
                     funcionario = new Funcionario(id, nome);
                     g->adicionar(funcionario);
-                    cout << "Funcionario cadastrado com sucesso" << endl
+                    cout << "Usuario cadastrado com sucesso" << endl
                          << endl;
                 }
             }
@@ -350,6 +350,7 @@ void menu()
                 cin >> minuto;
 
                 aluno->setHorarioFim(hora, minuto);
+                cout << endl;
             }
             catch (logic_error *e)
             {
